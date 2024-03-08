@@ -25,4 +25,5 @@ yarn-error.log*
   
 # Ignore .env file inside the backend folder
 backend/.env  
+frontend/.env
 

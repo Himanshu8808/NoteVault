@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 const Login = (props) => {
     const [credentials, setCredentials] = useState({email: "", password:""});
     let navigate = useNavigate();
-    const host = "http://localhost:5000";
+    const host = process.env.REACT_APP_HOST;
     const handleSubmit = async (e) => {
         e.preventDefault();
         const url = `${host}/api/auth/login`;
