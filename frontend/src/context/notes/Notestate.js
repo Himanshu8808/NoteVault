@@ -1,9 +1,8 @@
-require('dotenv').config();
 import { React, useState } from "react";
 import noteContext from "./noteContext";
 
 const Notestate = (props) => {
-  const host = process.env.HOST; 
+  const host = "http://localhost:5000"; 
   const notesInitial = []
   const [notes, setnotes] = useState(notesInitial)
 
