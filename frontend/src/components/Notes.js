@@ -4,7 +4,7 @@ import Noteitems from './Noteitems';
 import Addnote from './Addnote';
 import { useNavigate } from 'react-router-dom';
 
-const Notes = (props) => {
+const Notes = () => {
     const context = useContext(noteContext);
     const { notes, getnotes, editnote } = context
     const [note, setnote] = useState({ id: "", etitle: "", edescription: "", etag: "" })
@@ -29,7 +29,6 @@ const Notes = (props) => {
     const handleClick = (e) => {
         editnote(note.id, note.etitle, note.edescription, note.etag);
         refClose.current.click();
-        props.showAlert("Note Updated Successfully", "success");
     }
     const onChange = (e) => {
         setnote({ ...note, [e.target.name]: e.target.value })
@@ -71,17 +70,17 @@ const Notes = (props) => {
                     </div>
                 </div>
             </div>
-            <div className='mx-3 my-3'>
+            <div className='mx-2 my-1'>
                 <div className="row">
-                    <div className="col-md-4 scroll border border-3 mx-2 rounded">
+                    <div className='col-md-7 my-1 cheight border border-3 mx-2 rounded'>
+                        <Addnote/>
+                    </div>
+                    <div className="col-md-4 my-1 scroll border border-3 mx-2 rounded">
                         <h2 className='my-3 text-center'><strong>Your Notes</strong></h2>
                         <hr/>
                         {notes.map((note) => {
-                            return <Noteitems key={note._id} updatenote={updatenote} showAlert={props.showAlert} note={note} />;
+                            return <Noteitems key={note._id} updatenote={updatenote} note={note} />;
                         })}
-                    </div>
-                    <div className='col-md-7 border border-3 mx-2 rounded'>
-                        <Addnote showAlert={props.showAlert} />
                     </div>
                 </div>
             </div>

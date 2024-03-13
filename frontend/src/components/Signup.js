@@ -1,7 +1,7 @@
 import { React, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
-const Signup = (props) => {
+const Signup = () => {
     const [credentials, setCredentials] = useState({ name: "", email: "", password: "", cpassword: "" });
     let navigate = useNavigate();
     const host = process.env.REACT_APP_HOST;
@@ -12,7 +12,7 @@ const Signup = (props) => {
         // Check if password and confirm password match
         if (password !== cpassword) {
             // Passwords do not match, show an error message
-            props.showAlert("Password mismatched", "danger");
+            alert("Passwords should be equal")
             return; // Exit the function early
         }
         const url = `${host}/api/auth/createuser`;
@@ -29,10 +29,9 @@ const Signup = (props) => {
             //save the auth token and redirect
             localStorage.setItem('token', json.token)
             navigate('/')
-            props.showAlert("Congratulations! Your account has been created successfully.","success")
         }
         else{
-            props.showAlert("Invalid credentials. Please ensure all fields are filled correctly.","danger")
+            alert("invalid credentials");
         }
     }
     const onChange = (e) => {
